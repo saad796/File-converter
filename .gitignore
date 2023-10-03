@@ -1,3 +1,41 @@
 node_modules
 package-lock.json
 .env
+
+
+# Python Virtual Environment
+venv/
+
+# Compiled Python Files
+__pycache__/
+*.pyc
+
+# IDE or Code Editor Configuration Files (Examples)
+.vscode/
+.idea/
+
+# Logs and Temporary Files
+*.log
+*.tmp
+
+# Generated Output (Examples)
+/build/
+/dist/
+/docs/_build/
+
+# Dependency Management Files (Examples)
+Pipfile.lock
+Pipfile.lock.cpython-3*
+
+# Configuration Files with Sensitive Information
+config.json
+
+# Local Database Files
+db.sqlite3
+
+# Editor and System Files
+*~
+.DS_Store
+
+.docx
+.pdf
