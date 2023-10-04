@@ -1,10 +1,12 @@
 import './App.css';
-import InputFile from './components/InputFile';
+import InputDocToPdf from './components/InputDocToPdf';
+import InputPdfToDoc from './components/InputPdfToDoc';
 
 function App() {
   return (
     <div>
-      <InputFile/>
+      <InputPdfToDoc/>
+      <InputDocToPdf/>
     </div>
   );
 }

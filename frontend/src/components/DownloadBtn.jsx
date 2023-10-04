@@ -1,36 +1,17 @@
 import React from 'react'
 
 function DownloadBtn(props) {
-
-    async function handleDownloadClick()
-    {
-        try {
-            const response = await fetch(`http://localhost:8000/downloadPdfToDocx/${props.link}`, {
-              method: 'Get'
-            });
-      
-            if (response.ok) {
-              console.log("Downloading");
-            } else {
-                const status = await response.json()
-              alert(`Error ${status.error}`);
-            }
-          } catch (error) {
-            console.error(error);
-            alert('An error occurred while processing your request.');
-          }
-    }
-
     const downloadFile = async () => {
         try {
-          const response = await fetch(`http://localhost:8000/downloadPdfToDocx/${props.link}`); // Replace with the correct file name
+          const response = await fetch(`http://localhost:8000${props.link}`); 
           const blob = await response.blob();
           const url = window.URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = `${props.name}`; // Specify the desired file name
+          a.download = `${props.name}`; 
           a.click();
           window.URL.revokeObjectURL(url);
+          props.afterClick()
         } catch (error) {
           console.error('Error downloading file:', error);
         }
@@ -38,7 +19,6 @@ function DownloadBtn(props) {
 
   return (
     <>
-        {/* <button onClick={handleDownloadClick}>Download</button> */}
         <button onClick={downloadFile}>Download</button>
     </>
   )

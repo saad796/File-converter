@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import DownloadBtn from './DownloadBtn';
 
-function InputFile() {
+function InputPdfToDoc() {
 
     const [inpFile , setInpFile] = useState(null)
     const [downloadBtnLink , setDownloadBtnLink] = useState(null)
@@ -9,6 +9,11 @@ function InputFile() {
 
     function handleFileChange(e) {
         setInpFile(e.target.files[0])
+    }
+
+    function disableDownloadBtn() {
+      setDownloadBtnLink(null)
+      setFileOriginalName(null)
     }
 
     async function handleFileUpload() {
@@ -45,10 +50,10 @@ function InputFile() {
         <input type='file' accept='.pdf' onChange={handleFileChange} />
         <button onClick={handleFileUpload}>Convert to Word</button>
         {
-          downloadBtnLink && <DownloadBtn link={downloadBtnLink} name={fileOriginalName}/>
+          downloadBtnLink && <DownloadBtn link={`/downloadPdfToDocx/${downloadBtnLink}`} name={fileOriginalName} afterClick={disableDownloadBtn}/>
         }
     </div>
   )
 }
 
-export default InputFile
+export default InputPdfToDoc
